@@ -49,7 +49,7 @@ class Article extends Model
     public function receptionDetail(){
         return $this->hasMany('App\Models\ReceptionDetail','article_id');
     }
-
+    //report has many items
     public function report(){
         return $this->hasMany('App\Models\Report','article_id');
     }
