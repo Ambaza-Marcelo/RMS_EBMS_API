@@ -23,6 +23,8 @@ class Address extends Model
     	return $this->hasMany('App\Models\Supplier','address_id');
     }
 
+    //employes has many address
+
     public function employe(){
         return $this->hasMany('App\Models\Employe','address_id');
     }
