@@ -25,7 +25,7 @@ class Article extends Model
      public function category(){
         return $this->belongsTo('App\Models\Category');
     }
-
+    //order detail has many item
     public function orderDetail(){
     	return $this->hasMany('App\Models\OrderDetail','article_id');
     }
