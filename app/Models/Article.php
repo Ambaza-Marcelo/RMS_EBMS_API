@@ -53,7 +53,7 @@ class Article extends Model
     public function report(){
         return $this->hasMany('App\Models\Report','article_id');
     }
-
+    //invoice has many items
     public function factureDetail(){
         return $this->hasMany('App\Models\FactureDetail','article_id');
     }
