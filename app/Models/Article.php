@@ -33,7 +33,7 @@ class Article extends Model
     public function stock(){
     	return $this->hasMany('App\Models\Stock','article_id');
     }
-
+    //stockin detail has many items
     public function stockinDetail(){
     	return $this->hasMany('App\Models\StockinDetail','article_id');
     }
