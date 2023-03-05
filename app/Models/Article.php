@@ -45,7 +45,7 @@ class Article extends Model
     public function inventoryDetail(){
         return $this->hasMany('App\Models\InventoryDetail','article_id');
     }
-
+    //reception detail has many items
     public function receptionDetail(){
         return $this->hasMany('App\Models\ReceptionDetail','article_id');
     }
