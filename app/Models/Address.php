@@ -13,9 +13,11 @@ class Address extends Model
     	'district'
     ];
 
+
     public function userAddress(){
     	return $this->hasMany('App\Models\UserAddress','address_id');
     }
+    //supplier has many address
 
     public function supplier(){
     	return $this->hasMany('App\Models\Supplier','address_id');
