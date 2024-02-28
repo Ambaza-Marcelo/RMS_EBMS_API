@@ -111,11 +111,11 @@ const TESTEMAILS: EmailType[] = [
 ] as EmailType[];
 
 export default function App() {
-    const [emails, setEmails] = useState(TESTEMAILS);
+    const [emails, _] = useState(TESTEMAILS);
     console.log(emails);
 
     return (
-        <div className=" p-8 grid grid-cols-6">
+        <div className=" p-8 grid grid-cols-6 space-x-2">
             <EmailListView emails={emails} />
 
             <ReadEmailView email={emails[0]} />
@@ -141,18 +141,27 @@ function EmailListItem({ email }: { email: EmailType }) {
 }
 function ActionsView() {
     return (
-        <div>
-            <Button>Compose</Button>
-            <Button>Delete</Button>
-            <Button>Reply</Button>
-            <Button>Forward</Button>
+        <div className="flex space-x-4">
+            <Button variant={"outline"} size={"lg"}>
+                Compose
+            </Button>
+            <Button variant={"outline"} size={"lg"}>
+                Delete
+            </Button>
+            <Button variant={"outline"} size={"lg"}>
+                Reply
+            </Button>
+            <Button variant={"outline"} size={"lg"}>
+                Forward
+            </Button>
         </div>
     );
 }
 
 function ReadEmailView({ email }: { email: EmailType }) {
     return (
-        <div>
+        <div className="flex flex-col space-y-2">
+            <ActionsView />
             <EmailMetaDataView email={email} />
             <EmailContentView body={email.body} />
         </div>
