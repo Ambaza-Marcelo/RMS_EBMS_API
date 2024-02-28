@@ -1,33 +1,6 @@
-//  > A sophisticated solution crafted to elevate the efficiency of hotel operations.
-
-// ## Mailing Service Matters:
-
-// > A versatile tool catering to the diverse needs of hotels, fostering effective communication among guests and staff alike.
-
-// ### Key Features
-// #### Guest Communication:
-// - **Booking Confirmations**: Instant, personalized booking confirmations for a smooth arrival experience.
-
-// - **Reminders and Notifications**: Timely emails, including check-in instructions, event notifications, and exclusive offers.
-
-// - **Feedback Requests**: Insights from guests post-stay, demonstrating a commitment to continuous improvement.
-
-// - **Personalized Communication**: Tailor your communication to guests' preferences, creating a more personalized and memorable experience.
-
-// - **Brand Building**: Consistent and professional communication builds trust, enhances your brand image, and encourages repeat business.
-
-// - **Increased Guest Satisfaction**: Proactively address concerns, provide information, and exceed guest expectations, leading to higher satisfaction rates.
-
-// #### Staff Collaboration:
-//  - **Internal Announcements**: Stay informed about important updates, events, and operational changes.
-//  - **Task Assignments**: Assigning and tracking responsibilities.
-
-"use client";
-import { useState } from "react";
 import { EmailType } from "./types/email";
-import { Button } from "./components/ui/button";
 
-const TESTEMAILS: EmailType[] = [
+export const emails: EmailType[] =  [
     {
         id: 1,
         subject: "Meeting Agenda",
@@ -108,73 +81,4 @@ const TESTEMAILS: EmailType[] = [
         date: "2024-04-15",
         body: "Hi team,\n\nWishing you a joyful holiday season. Thank you for your hard work and dedication.\n\nBest regards,\nTeam Leader",
     },
-] as EmailType[];
-
-export default function App() {
-    const [emails, setEmails] = useState(TESTEMAILS);
-    console.log(emails);
-
-    return (
-        <div className=" p-8 grid grid-cols-6">
-            <EmailListView emails={emails} />
-
-            <ReadEmailView email={emails[0]} />
-        </div>
-    );
-}
-function EmailListView({ emails }: { emails: EmailType[] }) {
-    return (
-        <div className="col-span-2">
-            {emails.map((email) => (
-                <EmailListItem key={email.id} email={email} />
-            ))}
-        </div>
-    );
-}
-
-function EmailListItem({ email }: { email: EmailType }) {
-    return (
-        <div>
-            <EmailMetaDataView email={email} />
-        </div>
-    );
-}
-function ActionsView() {
-    return (
-        <div>
-            <Button>Compose</Button>
-            <Button>Delete</Button>
-            <Button>Reply</Button>
-            <Button>Forward</Button>
-        </div>
-    );
-}
-
-function ReadEmailView({ email }: { email: EmailType }) {
-    return (
-        <div>
-            <EmailMetaDataView email={email} />
-            <EmailContentView body={email.body} />
-        </div>
-    );
-}
-
-function EmailMetaDataView({ email }: { email: EmailType }) {
-    const { subject, sender, date, body } = email;
-    return (
-        <section className="flex  flex-col border-b-2 boder-b-zinc-500">
-            <h1 className="text-3xl">{sender}</h1>
-            <p className="text-zinc-500 text-clip">{subject}</p>
-            <div className=" truncate">{body}</div>
-            <div>{date}</div>
-        </section>
-    );
-}
-
-function EmailContentView({ body }: { body: string }) {
-    return (
-        <div>
-            <div>{body}</div>
-        </div>
-    );
-}
+];
