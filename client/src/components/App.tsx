@@ -24,8 +24,8 @@
 
 "use client";
 import { useState } from "react";
-import { EmailType } from "./types/email";
-import { Button } from "./components/ui/button";
+import { EmailType } from "../types/email";
+import { Button } from "./ui/button";
 
 const TESTEMAILS: EmailType[] = [
     {
