@@ -111,70 +111,79 @@ const TESTEMAILS: EmailType[] = [
 ] as EmailType[];
 
 export default function App() {
-    const [emails, setEmails] = useState(TESTEMAILS);
-    console.log(emails);
+  const [emails, _] = useState(TESTEMAILS);
+  console.log(emails);
 
-    return (
-        <div className=" p-8 grid grid-cols-6">
-            <EmailListView emails={emails} />
+  return (
+    <div className=" p-8 grid grid-cols-6 space-x-2">
+      <EmailListView emails={emails} />
 
-            <ReadEmailView email={emails[0]} />
-        </div>
-    );
+      <ReadEmailView email={emails[0]} />
+    </div>
+  );
 }
 function EmailListView({ emails }: { emails: EmailType[] }) {
-    return (
-        <div className="col-span-2">
-            {emails.map((email) => (
-                <EmailListItem key={email.id} email={email} />
-            ))}
-        </div>
-    );
+  return (
+    <div className="col-span-2">
+      {emails.map((email) => (
+        <EmailListItem key={email.id} email={email} />
+      ))}
+    </div>
+  );
 }
 
 function EmailListItem({ email }: { email: EmailType }) {
-    return (
-        <div>
-            <EmailMetaDataView email={email} />
-        </div>
-    );
+  return (
+    <div>
+      <EmailMetaDataView email={email} />
+    </div>
+  );
 }
 function ActionsView() {
-    return (
-        <div>
-            <Button>Compose</Button>
-            <Button>Delete</Button>
-            <Button>Reply</Button>
-            <Button>Forward</Button>
-        </div>
-    );
+  return (
+    <div className="flex space-x-4">
+      <Button variant={"outline"} size={"lg"}>
+        Compose
+      </Button>
+      <Button variant={"outline"} size={"lg"}>
+        Delete
+      </Button>
+      <Button variant={"outline"} size={"lg"}>
+        Reply
+      </Button>
+      <Button variant={"outline"} size={"lg"}>
+        Forward
+      </Button>
+    </div>
+  );
 }
 
 function ReadEmailView({ email }: { email: EmailType }) {
-    return (
-        <div>
-            <EmailMetaDataView email={email} />
-            <EmailContentView body={email.body} />
-        </div>
-    );
+  return (
+    <div className="flex flex-col space-y-2">
+      <ActionsView />
+      <EmailMetaDataView email={email} />
+      <EmailContentView body={email.body} />
+    </div>
+  );
 }
 
 function EmailMetaDataView({ email }: { email: EmailType }) {
-    const { subject, sender, date, body } = email;
-    return (
-        <section className="flex  flex-col border-b-2 boder-b-zinc-500">
-            <h1 className="text-3xl">{sender}</h1>
-            <p className="text-zinc-500 text-clip">{subject}</p>
-            <div className=" truncate">{body}</div>
-            <div>{date}</div>
-        </section>
-    );
+  const { subject, sender, date, body } = email;
+  return (
+    <section className="flex  flex-col border-b-2 boder-b-zinc-500">
+      <h1 className="text-3xl">{sender}</h1>
+      <p className="text-zinc-500 text-clip">{subject}</p>
+      <div className=" truncate">{body}</div>
+      <div>{date}</div>
+    </section>
+  );
 }
 
 function EmailContentView({ body }: { body: string }) {
-    return (
-        <div>
-            <div>{body}</div>
-        </div>
-    );
+  return (
+    <div>
+      <div>{body}</div>
+    </div>
+  );
 }
