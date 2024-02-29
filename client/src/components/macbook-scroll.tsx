@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
-import screenshot from "../../public/screenshot.png";
+
 
 import {
     IconBrightnessDown,
